@@ -23,7 +23,8 @@ export class BookService {
       publishYear: 1925,
     },
   ];
-  getHello(): string {
-    return 'Hello World!';
+
+  getAllBooks(): Book[] {
+    return this.books;
   }
 }
