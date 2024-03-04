@@ -47,4 +47,12 @@ export class BookService {
     this.books.push(newBook);
     return newBook;
   }
+
+  public deleteBook(id: string) {
+    const index = this.books.findIndex((book) => book.id === id);
+    if (index === -1) {
+      throw new NotFoundException();
+    }
+    this.books.splice(index, 1);
+  }
 }
