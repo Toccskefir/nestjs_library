@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from './book.model';
 
 @Injectable()
@@ -26,5 +26,14 @@ export class BookService {
 
   getAllBooks(): Book[] {
     return this.books;
+  }
+
+  getBook(id: string) {
+    const book = this.books.find((book) => book.id === id);
+    if (!book) {
+      throw new NotFoundException();
+    } else {
+      return book;
+    }
   }
 }
