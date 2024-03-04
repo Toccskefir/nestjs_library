@@ -55,4 +55,13 @@ export class BookService {
     }
     this.books.splice(index, 1);
   }
+
+  public updateBook(id: string, bookDto: BookDTO) {
+    const book = this.getBook(id);
+    if (!book) {
+      throw new NotFoundException();
+    }
+    Object.assign(book, bookDto);
+    return book;
+  }
 }
