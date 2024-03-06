@@ -29,7 +29,7 @@ export class BookService {
     return this.books;
   }
 
-  public getBook(id: string) {
+  public getBook(id: string): Book | undefined {
     const book = this.books.find((book) => book.id === id);
     if (!book) {
       throw new NotFoundException();
